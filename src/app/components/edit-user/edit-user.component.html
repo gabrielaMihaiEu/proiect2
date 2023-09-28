@@ -1,0 +1,32 @@
+<form nz-form [formGroup]="editUserForm" (ngSubmit)="editeazaUtilizator()">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>Nume</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="numeErrorTpl">
+        <input nz-input formControlName="nume" />
+        <ng-template #numeErrorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">Introduceti un nume!</ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>Prenume</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="prenumeErrorTpl">
+        <input nz-input formControlName="prenume" type="text" />
+        <ng-template #prenumeErrorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">Introduceti un prenume!</ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>Varsta</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzHasFeedback nzErrorTip="Introduceti varsta!">
+        <input nz-input type="text" formControlName="varsta" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control [nzOffset]="7" [nzSpan]="12">
+        <button nz-button nzType="primary" [disabled]="!editUserForm.valid">Editeaza</button>
+        <button nz-button (click)="resetareFormular($event)">Reseteaza</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>

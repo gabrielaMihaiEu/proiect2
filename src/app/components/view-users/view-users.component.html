@@ -1,0 +1,24 @@
+<nz-table [nzData]="users">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nume</th>
+        <th>Prenume</th>
+        <th>Varsta</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user?.id}}.</td>
+        <td>{{user?.nume}}</td>
+        <td>{{user?.prenume}}</td>
+        <td>{{user?.varsta}}</td>
+        <td>
+          <a [routerLink]="['edit-user/'+user.id]" [state]=user>Editeaza</a>  <!-- link editeaza  -->
+          <nz-divider nzType="vertical"></nz-divider> <!-- bara intre editeaza si stergere -->
+          <button nz-button nzType="primary" nzDanger="true" (click)="stergeUtilizator(user)">Sterge</button>  <!-- buton de stergere -->
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
